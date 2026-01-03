@@ -1,0 +1,23 @@
+{
+  "name": "quran50m-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Quran50M AI chatbot using Groq & LLaMA",
+  "main": "api/chat.js",
+  "type": "module",
+  "scripts": {
+    "start": "node api/chat.js",
+    "dev": "node api/chat.js"
+  },
+  "keywords": [
+    "quran",
+    "ai",
+    "chatbot",
+    "groq",
+    "llama"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@vercel/speed-insights": "^1.0.0"
+  }
+}
