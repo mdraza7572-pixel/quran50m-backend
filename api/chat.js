@@ -1,3 +1,8 @@
+import { inject } from "@vercel/speed-insights";
+
+// Inject Speed Insights for performance monitoring
+inject();
+
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Only POST method allowed" });
