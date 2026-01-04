@@ -1,3 +1,5 @@
+import { Analytics } from '@vercel/speed-insights/next';
+
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Only POST method allowed" });
@@ -10,6 +12,9 @@ export default async function handler(req, res) {
   }
 
   try {
+    // Track API request with Speed Insights
+    const startTime = Date.now();
+
     const response = await fetch(
       "https://api.groq.com/openai/v1/chat/completions",
       {
@@ -38,6 +43,11 @@ export default async function handler(req, res) {
     );
 
     const data = await response.json();
+    const duration = Date.now() - startTime;
+
+    // Record response metrics
+    res.setHeader('Server-Timing', `total;dur=${duration}`);
+
     return res.status(200).json(data);
 
   } catch (error) {
